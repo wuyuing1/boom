@@ -22,3 +22,35 @@ function renderMineField(difficulty)
     n = parseInt(prompt("请输入列数(n):"));
     mineNums = parseInt(prompt("请输入雷的数量(mineNums):"));
 }
+// 难易程度设置
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取按钮元素
+    let easyBtn = document.getElementById('easy-btn');
+    let mediumBtn = document.getElementById('medium-btn');
+    let hardBtn = document.getElementById('hard-btn');
+    let selfBtn = document.getElementById('self-btn');
+
+    // 绑定点击事件处理程序
+    easyBtn.addEventListener('mousedown', function() {
+        renderMineField('easy');
+      });
+    mediumBtn.addEventListener('mousedown', function() {
+        renderMineField('medium');
+      });
+    hardBtn.addEventListener('mousedown', function() {
+        renderMineField('hard');
+      });
+    selfBtn.addEventListener('mousedown', function() {
+        renderMineField('self');
+      });
+})
+    let gameState={
+        m,
+        n,
+        mineNums,
+        remaining:null,
+        timing:null,
+        cells:null,
+        gameOver:false
+    }
+

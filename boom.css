@@ -4,3 +4,34 @@ body{
     justify-content: center;
     align-items: center;
 }
+/* ----------面板样式-------- */
+.game-info{
+    background-color: #aaa;
+    display: flex;
+    align-items: center;
+}
+.game-info>.padding{
+    flex-grow: 1;
+}
+.game-info>.remaining{
+    width:40px;
+    height: 20px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+.game-info>.timer{
+    width:40px;
+    height: 20px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+.game-info>.message{
+    width:auto;
+    font-size:auto;
+    text-align: center;
+    height: 20px;
+}
+td{
+    height: 32px;
+
+}
