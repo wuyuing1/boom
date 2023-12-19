@@ -54,3 +54,52 @@ td{
 .cell.unclear>span.mine{
     display: none;
 }
+.cell>span.mine{
+    display: inline-block;
+     font-size: 30px;
+     text-align: center;
+     line-height: 30pt;
+     font-weight: 900;
+     color: #960f0f;
+}
+.cell>span.mine-count{
+    display: inline-block;
+     font-size: 20px;
+     text-align: center;
+     line-height: 24px;
+     font-weight: 900;
+}
+span.mine-count.n1{
+     color: blue;
+}
+span.mine-count.n2{
+    color: rgb(0, 255, 42);
+}
+span.mine-count.n3{
+    color: red;
+}
+span.mine-count.n4,
+span.mine-count.n5,
+span.mine-count.n6,
+span.mine-count.n7,
+span.mine-count.n8{
+    color: purple;
+}
+
+.spreaded{
+    background-color: yellow;
+}
+/* 爆炸消息 */
+.cell.exploded{
+    background-color: #960f0f;
+}
+.cell.exploded.spreaded{
+    background-color: rgb(238, 186, 237);
+}
+/* 成功消息 */
+.cell.success{
+    background-color: #b7fcb7;
+}
+.cell.success.spreaded{
+    background-color: #b7fcb7;
+}
