@@ -295,3 +295,77 @@ function gameSuccess(gameState){
         gameState.gameOver=true
     
 }
+// 右键标雷
+function handleFlagging(gameState,rowIdx,colIdx){
+    if (gameState.timing===null){
+        startGame(gameState)
+    }
+    let cell=gameState.cells[rowIdx][colIdx]
+    if (cell.spreaded){
+        return
+    }
+    setFlag(cell,!cell.flag);
+    // 剩余（标记）雷数目
+    if (cell.flag){
+        gameState.remaining-=1;
+    }else{
+        gameState.remaining+=1;
+    }
+    let remainingE1=document.querySelector(".game-info>.remaining")
+    remainingE1.innerText=`${gameState.remaining}`;
+
+    if (checkSuccess(gameState)){
+            gameSuccess(gameState)
+    }
+}
+function setFlag(cell,flag){
+    if (flag){
+        cell.flag=true
+        cell.el.innerHTML=`<span class="flag">!</span>`
+    }else{
+        cell.flag=false
+        if (cell.mined){
+            cell.el.innerHTML=`<span class="mine">*</span>`
+        }else if (cell.mineCount>0){
+            cell.el.innerHTML=`<span class="mine-count n${cell.mineCount}">${cell.mineCount}</span>`
+        }else {
+            cell.el.innerHTML="";
+        }
+
+    }
+}
+function spreadSafeField(gameState,rowIdx,colIdx){
+    console.log('center',rowIdx,colIdx)
+    let cell=gameState.cells[rowIdx][colIdx]
+    if (!cell.spreaded){
+        cell.spreaded=true
+        cell.el.classList.remove("unclear")
+        cell.el.classList.add("spreaded")
+        if (cell.flag){
+            setFlag(cell,false)
+        }
+    }
+        for (let [drow,dcol] of directions){
+            let newRowIdx=rowIdx+drow,newColIdx=colIdx+dcol;
+            if (newRowIdx<0 || newRowIdx>=gameState.m ||
+                newColIdx<0 || newColIdx>=gameState.n){
+                    continue;
+                }
+            let cell=gameState.cells[newRowIdx][newColIdx]
+            if (cell.spreaded){
+                continue;
+            }
+            if (!cell.spreaded && cell.mineCount==0){
+                spreadSafeField(gameState,newRowIdx,newColIdx)
+            }
+            cell.spreaded=true
+            cell.el.classList.remove("unclear")
+            cell.el.classList.add("spreaded")
+
+            if (cell.flag){
+                console.log('rc',rowIdx,colIdx)
+                setFlag(cell,false)
+            }
+            }
+}
+renderMineField()
