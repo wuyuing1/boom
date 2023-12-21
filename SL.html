@@ -1,0 +1,30 @@
+<!-- 首先建立工作空间：首先创建初始文件html、css、js -->
+<!-- 建议版本控制：用git软件来管理我们的文本 -->
+<html lang="cn">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="SL.css">
+    </head>
+    <body>
+        <div class="game-board">
+            <div class="js">欢迎来到扫雷</div>
+            <div id="level">
+                <button id="easy-btn">简单</button>
+                <button id="medium-btn">中等</button>
+                <button id="hard-btn">困难</button>
+                <button id="self-btn">自定义</button>
+                <button id="restar-button">重新开始</button>
+            </div>
+            <div class="game-info">
+                <div class='remaining'></div>
+                <div class="padding"></div>
+                <div class="message"></div>
+                <div class="padding"></div>
+                <div class="timer"></div>
+            </div>
+            <table id="mine-field">  
+        </table>
+    </div>
+        <script src="SL.js"></script>
+    </body>
+</html>
